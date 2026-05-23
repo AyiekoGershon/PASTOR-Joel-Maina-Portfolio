@@ -334,6 +334,29 @@ img {
     animation: fadeInUp 1s ease-out 0.6s both;
 }
 
+.hero-church {
+    font-size: 0.95rem;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0.85;
+    animation: fadeInUp 1s ease-out 0.45s both;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.hero-church::before,
+.hero-church::after {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+}
+
 .hero-buttons {
     display: flex;
     gap: 20px;
@@ -467,8 +490,10 @@ img {
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .team-card {
@@ -621,10 +646,59 @@ img {
     width: 100%;
     height: 400px;
     background: var(--gradient-2);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
 }
 
 .ministry-image .image-placeholder i {
     font-size: 5rem;
+}
+
+/* Ministry photo styling */
+.ministry-image .image-placeholder.photo {
+    padding: 8px;
+    background: var(--gradient-gold);
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.25);
+    transition: var(--transition);
+}
+
+.ministry-image .image-placeholder.photo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(212, 175, 55, 0.35);
+}
+
+.ministry-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+    transition: var(--transition);
+}
+
+.ministry-image .image-placeholder.photo:hover .ministry-photo {
+    transform: scale(1.03);
+}
+
+/* Image overlay text for ministry sections */
+.ministry-image .image-placeholder.photo::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(15, 12, 41, 0.75);
+    backdrop-filter: blur(10px);
+    padding: 8px 20px;
+    border-radius: 50px;
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    white-space: nowrap;
 }
 
 /* ===== GALLERY SECTION ===== */
@@ -784,22 +858,42 @@ img {
     border: 1px solid rgba(212, 175, 55, 0.15);
 }
 
+.method.featured {
+    background: rgba(212, 175, 55, 0.12);
+    border-color: var(--gold);
+    padding: 40px 24px;
+}
+
 .method i {
-    font-size: 2rem;
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 16px;
+}
+
+.method h4 {
+    font-size: 1.3rem;
     color: var(--gold);
     margin-bottom: 12px;
 }
 
-.method h4 {
-    font-size: 1.1rem;
-    color: var(--gold);
-    margin-bottom: 8px;
-}
-
 .method p {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 0.95rem;
     margin: 4px 0;
+}
+
+.method-number {
+    font-size: 1.6rem !important;
+    font-weight: 700;
+    color: var(--gold-light) !important;
+    letter-spacing: 2px;
+    margin: 12px 0 !important;
+}
+
+.method-note {
+    font-size: 0.9rem !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-style: italic;
 }
 
 /* ===== CONTACT SECTION ===== */
@@ -1243,6 +1337,15 @@ img {
 
     .ministry-image .image-placeholder {
         height: 280px;
+    }
+
+    .ministry-image .image-placeholder.photo {
+        height: 280px;
+    }
+
+    .ministry-image .image-placeholder.photo::after {
+        font-size: 0.75rem;
+        padding: 6px 16px;
     }
 }
 
